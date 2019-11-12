@@ -1,0 +1,26 @@
+html,body{
+    font-size: 25px;
+    font-family:"Arial";
+	background-image:url('../img/plane.jpg');
+    background-size:cover;
+    background-attachment:fixed;
+}
+
+ul{
+    list-style-type:none;
+    text-align:center;
+    font-size:14px;
+}
+li{
+    float:right;
+    padding:10px;
+    background-color:#ff9137;
+}
+
+table{
+    position: relative;
+    top:400px;
+    height: 200px;
+    font-size:25px;  
+	background: white;
+}

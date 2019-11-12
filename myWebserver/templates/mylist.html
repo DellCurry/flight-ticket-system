@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Flight List</title>
+<style> td{text-align:center;}</style>
+<link rel="stylesheet" href="../statics/css/flightlist.css">
+</head>
+<body onload="load()">
+  <ul>
+      <li><a href="/logout">Log Out</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/mylist">{{user}}</a></li>
+  </ul>
+<div align="center" overflow-x="none">
+    <table width="70%" overflow-y="scroll">
+    <tr>
+      <td>Tickets ID</td>
+      <td>Airline</td>
+      <td>Flight number</td>
+      <td>Time</td>
+      <td>Airport</td>
+      <td>Seat Code</td>
+      <td>Price</td>
+    </tr>
+    {% for result in data %}
+    <tr>
+        <td>{{result[0]}}</td>
+        <td>{{result[1]}}</td>
+        <td>{{result[2]}}</td>
+        <td>{{result[3]}}<br>
+            {{result[4]}}</td>
+        <td>{{result[5]}} T{{result[6]}}<br>
+            {{result[7]}} T{{result[8]}}</td> 
+        <td>{{result[9]}}</td>
+        <td>{{result[10]}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+</div>
+</body>
+</html>

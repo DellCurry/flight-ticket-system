@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Flight List</title>
+<style> td{text-align:center;}</style>
+<link rel="stylesheet" href="../statics/css/buy.css">
+</head>
+<body>
+  <ul id=user>
+      <li><a href="/logout">Log Out</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/mylist">{{user}}</a></li>
+  </ul>
+<div align="center" overflow-x="none">
+    <table width="50%" overflow-y="scroll">
+    <tr>
+      <td>seat</td>
+    </tr>
+    {% for result in data %}
+    <tr>
+        <td>{{result[1]}}</td>
+        <td><form action="/buyresult" method="POST">
+            <input type="hidden" name='tid' value='{{result[0]}}'>
+            <input type="submit" value="Choose" id="Choose" class="btn btn-fullWidth">
+            </form>
+        </td>    
+    </tr>
+    {% endfor %}
+    </table>
+</div>
+</body>
+</html>

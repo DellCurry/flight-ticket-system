@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Log In</title>
+<script src="../statics/js/main.js"></script>
+<link rel="stylesheet" href="../statics/css/signin.css">
+</head>
+ 
+<body>
+<ul>
+	<li><a href="/">Home</a></li>
+	<li>Welcome</li>
+</ul>
+<div class="tab-ui">
+    <div class="tab" align='center'>
+        <div class="tab-title" id="tab1" style="float:left;margin-right:0.3px;" onclick="show(1)">
+            <a>Sing In</a>
+        </div>
+        <div class="tab-title" id="tab2" style="float:left;margin-left:0.3px;" onclick="show(2)">
+            <a>Sign Up</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="tab-content" id="content1">
+			<form action="/login" method="Post" >
+				Email*
+				<input type="text" id="SignIn.Email" name="email" placeholder='Email'>
+				<br>
+				Password*
+				<input type="password" id="SignIn.password" name="password" placeholder='Password'>
+				<br>
+                <input type="submit" value="SignIn" id="SignInSubmit" class="btn btn-fullWidth">
+			</form>
+        </div>
+		<div class="tab-content" id="content2" style="display: none;">
+			<form action="/signupcheck" method="POST">
+				UserID*
+				<input type="text" id="SignUp.userid" name="userid" placeholder='UserID'>
+				<br>
+				Last Name*
+				<input type="text" id="SignUp.lastname" name="lastname" placeholder='Last Name'>
+				<br>
+				First Name*
+				<input type="text" id="SignUp.firstname" name="firstname" placeholder='First Name'>
+				<br>
+				Age*
+				<input type="text" id="SignUp.age" name="age" placeholder='Age'>
+				<br>
+				Gender*<select name="gender">
+					<option value ="M">Male</option>
+					<option value ="F">Female</option>
+				</select>
+				<br>
+				Email*
+				<input type="text" id="SignUp.email" name="email" placeholder='Email'>
+				<br>
+				Password*
+				<input type="password" id="SignUp.password" name="password" placeholder='Password'>
+				<br>
+                <input type="submit" value="SignUp" id="SignUpSubmit" class="btn btn-fullWidth">
+			</form>
+        </div>
+    </div>
+</div>
+</body>
+ 
+</html>

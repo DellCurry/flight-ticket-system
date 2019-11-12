@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Alex Airline</title>
+<script src="main.js"></script>
+<script src="background.js"></script>
+<link rel="stylesheet" href="signin.css">
+</head>
+ 
+<body>
+<div class="tab-ui">
+    <div class="tab" align='center'>
+        <div class="tab-title" id="tab1" style="float:left;margin-right:0.4px;" onclick="show(1)">
+            <a>Sing In</a>
+        </div>
+        <div class="tab-title" id="tab2" style="float:left;margin-left:0.4px;" onclick="show(2)">
+            <a>Sign Up</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="tab-content" id="content1">
+				<label for="SignIn.username">
+				Username*
+				<input type="text" id="SignIn.username" name="username" placeholder='Username'>
+				</label>
+				<br>
+				<label for="SignIn.password" >
+				Password*
+				<input type="text" id="SignIn.password" name="password" placeholder='password'>
+				</label>
+				<br>
+				<label>
+                    <input type="submit" value="SignIn" id="SignInSubmit" class="btn btn-fullWidth">
+                </label>
+        </div>
+        <div class="tab-content" id="content2" style="display: none;">
+            <label for="SignUp.username">
+				Username*
+				<input type="text" id="SignUp.username" name="username" placeholder='Username'>
+				</label>
+				<br>
+				<label for="SignUp.email" >
+				Email*
+				<input type="text" id="SignUp.email" name="email" placeholder='Email'>
+				</label>
+				<br>
+				<label for="SignUp.password" >
+				Password*
+				<input type="text" id="SignUp.password" name="password" placeholder='password'>
+				</label>
+				<br>
+				<label>
+                    <input type="submit" value="SignUp" id="SignUpSubmit" class="btn btn-fullWidth">
+                </label>
+        </div>
+    </div>
+</div>
+</body>
+ 
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Alex Airline</title>
+<script src="../statics/js/main.js"></script>
+<script type="text/javascript">
+function load(){
+    var user=document.getElementById("user");
+    var anoy=document.getElementById("anoy");
+    var daer= '{{account|tojson}}';
+    if (daer=='true'){
+        user.style.display="block";
+        anoy.style.display="none";
+    }
+    else{
+        user.style.display="none";
+        anoy.style.display="block";
+    }
+}
+</script>
+<link rel="stylesheet" href="../statics/css/main.css">
+</head>
+ 
+<body onload="load()">
+<ul id=user>
+    <li><a href="/logout">Log Out</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/mylist">{{user}}</a></li>
+</ul>
+<ul id=anoy>
+    <li><a href="login">Sign Up</a></li>
+    <li><a href="login">Sign In</a></li>
+    <li><a href="/">Home</a></li>
+</ul>
+
+<div class="tab-ui">
+    <div class="tab" align='center'>
+        <div class="tab-title" id="tab1" style="float:left;margin-right:0.5px;" onclick="show(1)">
+            <a>Book</a>
+        </div>
+        <div class="tab-title" id="tab2" style="float:left;margin-left:0.5px;" onclick="show(2)">
+            <a>Flight Status</a>
+        </div>
+        <div class="tab-title" id="tab3" style="float:left;margin-left:0.8px" onclick="show(3)">
+            <a>My trip</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="tab-content" id="content1">
+            <form action="/flightbook" method="POST">
+                From*
+                <input type="text" id="flightSearch.from" name="from" placeholder='City or Airport'>
+                <br>
+                To*
+                <input type="text" id="flightSearch.to" name="to" placeholder='City or Airport'>
+                <br>
+                Depart*
+                <input type="text" id="flightSearch.year" name="year" placeholder='yyyy' size=4>
+                -<input type="text" id="flightSearch.month" name="month" placeholder='mm' size=2>
+                -<input type="text" id="flightSearch.day" name="day" placeholder='dd' size=2>
+                <input type="submit" value="Search" id="bookSubmit" class="btn btn-fullWidth">
+            </form>
+        </div>
+        
+        <div class="tab-content" id="content2" style="display: none;">
+            <form action="/flightid" method="POST">
+                Flight Number*
+                <input type="text" id="flightSearch.flightID" name="fid" placeholder='Flight Number'>
+                <br>
+                Depart*
+                <input type="text" id="flightSearch.year" name="year" placeholder='yyyy' size=4>
+                -<input type="text" id="flightSearch.month" name="month" placeholder='mm' size=2>
+                -<input type="text" id="flightSearch.day" name="day" placeholder='dd' size=2>
+                <br>
+                <input type="submit" value="Search" id="flight number" class="btn btn-fullWidth">
+            </form>
+        </div>
+        <div class="tab-content" id="content3" style="display: none;">
+			
+        </div>
+    </div>
+</div>
+</body>
+ 
+</html>
