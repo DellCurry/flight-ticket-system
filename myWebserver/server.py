@@ -57,6 +57,8 @@ def flightBook():
   year = request.form['year']
   month = request.form['month']
   day = request.form['day']
+  if not (_from and to and year and month and day):
+    return redirect('/')
   try:
     cursor=g.conn.execute(  "SELECT airline_name,fid, departure_time,arrival_time,dep_name,departure_terminal,arr_name,arrival_terminal \
                               FROM airline INNER JOIN ( SELECT airline_abbr,F.fid, F.departure_time,arrival_time,dep_abbr,departure_terminal,\
@@ -108,6 +110,8 @@ def flightid():
   year = request.form['year']
   month = request.form['month']
   day = request.form['day']
+  if not (fid and year and month and day):
+    return redirect('/')
   try:
     cursor=g.conn.execute(" SELECT airline_name,fid, departure_time,arrival_time,dep_name,departure_terminal,arr_name,arrival_terminal \
                             FROM airline INNER JOIN ( SELECT  airline_abbr,F.fid, F.departure_time,arrival_time,dep_abbr,departure_terminal,\
@@ -228,6 +232,9 @@ def login():
     if request.method == 'POST':
       email = request.form['email']
       password = request.form['password']
+      if not (email and password):
+        error="Empty field detected"
+        return render_template('login.html',error=error)
       cursor=g.conn.execute("SELECT password FROM Users WHERE email='%s'"%email)
       real=''
       for result in cursor:
@@ -244,31 +251,38 @@ def login():
         #    return abort(400)
         return redirect('/')
       else:
-        print("login failed")
-        return redirect('/login')
+        error="Email and password don't match"
+        return render_template('login.html',error=error)
     else:
       return render_template('login.html')
   except:
     return redirect('/login')
 
-@app.route('/signupcheck',methods=['POST'])
+@app.route('/signupcheck',methods=['GET','POST'])
 def signup():
-  uid=request.form['userid']
-  first=request.form['firstname']
-  last=request.form['lastname']
-  age=request.form['age']
-  gender=request.form['gender']
-  age=request.form['age']
-  email=request.form['email']
-  password=request.form['password']
-  try:
-    g.conn.execute("INSERT INTO Users VALUES ('%s','%s','%s','%s','%s','%s',%s)"%(uid,last,first,gender,email,password,age))
-    cur_user = UserMixin()
-    cur_user.id=email
-    login_user(cur_user)
-    return redirect('/')
-  except:
-    return redirect('/login')
+  if request.method == 'POST':
+    uid=request.form['userid']
+    first=request.form['firstname']
+    last=request.form['lastname']
+    age=request.form['age']
+    gender=request.form['gender']
+    age=request.form['age']
+    email=request.form['email']
+    password=request.form['password']
+    if not (uid and first and last and age and gender and age and email and password):
+      error="Empty fields detected"
+      return render_template('login.html',error_signup=error)
+    try:
+      g.conn.execute("INSERT INTO Users VALUES ('%s','%s','%s','%s','%s','%s',%s)"%(email,last,first,gender,uid,password,age))
+      cur_user = UserMixin()
+      cur_user.id=email
+      login_user(cur_user)
+      return redirect('/')
+    except:
+      error="Some fields failed"
+      return render_template('login.html',error_signup=error)
+  else:
+    return redirect('login')
 
 @app.route('/logout')
 def logout():

@@ -19,7 +19,7 @@ li{
 	font-size: 14px;
     font-family:"Arial";
     width: 400px;
-    height: 300px;
+    height: 350px;
     position: relative;
   	left:10%;
   	top:50px;
@@ -50,6 +50,10 @@ li{
 .book{
 	position:relative;
 	top:20px;
-	left:20%;
-	
+	left:20%;	
+}
+
+p{
+  color:red;
+  font-size:20px;  
 }
